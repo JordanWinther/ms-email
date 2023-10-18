@@ -1,0 +1,13 @@
+Seguindo os padrões de Clean Architecture.
+
+*Primeiro package é o Core, ele reúne os casos de uso da aplicação e as regras de negócio.
+	O caso de uso, define o que o nosso projeto faz, mas não diz como. Ou seja, ele "proteje" as regras de negócio de como será
+	implementado do lado de fora.
+
+*Segundo, criamos o package de Application, que deve conter as implementações do caso de uso(interfaces).
+
+*Terceiro, criamos o package Interface Adapter, que deve conter as interfaces que serão implementadas pelos classes de serviço
+
+
+
+para ser o portão da aplicação como o mundo externo. é onde recebemos nossas requesisões.
