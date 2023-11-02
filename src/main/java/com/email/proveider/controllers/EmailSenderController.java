@@ -30,10 +30,10 @@ public class EmailSenderController {
 	public ResponseEntity<Object> sendEmail( @RequestBody @Validated  EmaiRequestlRecord email){
 		try {
 			emailSenderService.sendEmail( email.getTo(), email.getSubject(), email.getBody());
-			//return ResponseEntity.ok("E-mail sending sucessfully");
+			
 			return  ResponseEntity.ok(email);
 		} catch (ErrorMailSenderException e) {
-			//return ResponseEntity.ok(new ErrorMailSenderException("Error while sending e-mail", e.getCause()) );
+			
 			return ResponseEntity
 					.status(HttpStatus.INTERNAL_SERVER_ERROR)
 					.body(	new ErrorMailSenderException("Error while sending e-mail", e.getCause()) );
