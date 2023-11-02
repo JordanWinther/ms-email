@@ -1,5 +1,7 @@
 package com.email.proveider.controllers;
 
+import java.util.Optional;
+
 import org.springframework.http.HttpStatus;
 import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
@@ -25,12 +27,17 @@ public class EmailSenderController {
 	}
 
 	@PostMapping
-	public ResponseEntity<String> sendEmail( @RequestBody @Validated  EmaiRequestlRecord email){
+	public ResponseEntity<Object> sendEmail( @RequestBody @Validated  EmaiRequestlRecord email){
 		try {
 			emailSenderService.sendEmail( email.getTo(), email.getSubject(), email.getBody());
-			return ResponseEntity.ok("E-mail sending sucessfully");
+			//return ResponseEntity.ok("E-mail sending sucessfully");
+			return  ResponseEntity.ok(email);
 		} catch (ErrorMailSenderException e) {
-			return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Error while sending e-mail");
+			//return ResponseEntity.ok(new ErrorMailSenderException("Error while sending e-mail", e.getCause()) );
+			return ResponseEntity
+					.status(HttpStatus.INTERNAL_SERVER_ERROR)
+					.body(	new ErrorMailSenderException("Error while sending e-mail", e.getCause()) );
+			
 		}
 		
 		
