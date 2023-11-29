@@ -14,7 +14,7 @@ public class Email {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
 
-    private String to;
+    private String destinatary;
     private String subject;
     private String body;
     
@@ -24,17 +24,13 @@ public class Email {
     
 	public Email(String to, String subject, String body) {
 		super();
-		this.to = to;
+		this.setDestinatary(to);
 		this.subject = subject;
 		this.body = body;
 	}
 	
-	public String getTo() {
-		return to;
-	}
-	public void setTo(String to) {
-		this.to = to;
-	}
+	
+	
 	public String getSubject() {
 		return subject;
 	}
@@ -46,6 +42,14 @@ public class Email {
 	}
 	public void setBody(String body) {
 		this.body = body;
+	}
+
+	public String getDestinatary() {
+		return destinatary;
+	}
+
+	public void setDestinatary(String destinatary) {
+		this.destinatary = destinatary;
 	}
 
 }

@@ -24,17 +24,17 @@ public class JavaMailSender  implements EmailSenderGateway{
 
 	
 	Properties props;
-	private String user = "jordaneinther@gmail.com";
-	private String password="C*re2quad;";
+	private String user = "";
+	private String password="";
 	
 	public JavaMailSender(Properties properties) {
 		this.props = properties;
 		 
 		props.put("mail.smtp.host", "smtp.gmail.com");
-		props.put("mail.smtp.socketFactory.port", "465");
+		props.put("mail.smtp.socketFactory.port", "587");
 		props.put("mail.smtp.socketFactory.class", "javax.net.ssl.SSLSocketFactory");
 		props.put("mail.smtp.auth", "true");
-	    props.put("mail.smtp.port", "465");
+	    props.put("mail.smtp.port", "587");
 	   
 	}
 	
