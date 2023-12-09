@@ -19,7 +19,7 @@ public class EmailSenderService  implements EmailSenderUseCase{
 	
 	@Override
 	public void sendEmail(String to, String subject, String body) {
-		//this.gateway.sendEmail(to, subject, body);
+		this.gateway.sendEmail(to, subject, body);
 		salvarEmail(to, subject, body);
 	}
 
