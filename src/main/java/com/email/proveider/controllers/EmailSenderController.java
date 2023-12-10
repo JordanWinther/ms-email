@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.email.proveider.application.EmailSenderService;
+import com.email.proveider.core.EmailSenderUseCase;
 import com.email.proveider.core.dto.EmaiRequestlRecord;
 import com.email.proveider.core.exceptions.ErrorMailSenderException;
 import com.email.proveider.infra.JavaMailSender;
@@ -23,16 +24,19 @@ import com.email.proveider.infra.JavaMailSender;
 @RequestMapping("/ms/email")
 public class EmailSenderController {
 	
-	private final EmailSenderService emailSenderService;
-	 public EmailSenderController( EmailSenderService service ) {
-		this.emailSenderService = service;
+	
+	private final EmailSenderUseCase senderUseCase;
+	
+	 public EmailSenderController(  EmailSenderUseCase senderUseCase ) {
+		
+		this.senderUseCase = senderUseCase;
 	}
 
 	@PostMapping
 	public ResponseEntity<Object> sendEmail( @RequestBody @Validated  EmaiRequestlRecord email){
 		try {
-			emailSenderService.sendEmail( email.getTo(), email.getSubject(), email.getBody());
 			
+			senderUseCase.sendEmail(email.getTo(), email.getSubject(),email.getBody());
 			return  ResponseEntity.ok(email);
 		} catch (ErrorMailSenderException e) {
 			
