@@ -1,7 +1,9 @@
 package com.email.proveider.core;
 
+import com.email.proveider.core.Entity.Email;
+
 public interface EmailSenderUseCase {
 
-	void sendEmail(String to, String subject, String body);
-	void salvarEmail(String to, String subject, String body);
+  	Email sendEmail(String to, String subject, String body);
+	Email salvarEmail(String to, String subject, String body);
 }

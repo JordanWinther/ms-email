@@ -5,6 +5,7 @@ import org.springframework.stereotype.Service;
 import com.email.proveider.adapters.EmailSenderGateway;
 import com.email.proveider.adapters.SalvarEmailGateway;
 import com.email.proveider.core.EmailSenderUseCase;
+import com.email.proveider.core.Entity.Email;
 
 @Service
 public class EmailSenderService  implements EmailSenderUseCase{
@@ -18,14 +19,14 @@ public class EmailSenderService  implements EmailSenderUseCase{
 	}
 	
 	@Override
-	public void sendEmail(String to, String subject, String body) {
+	public Email sendEmail(String to, String subject, String body) {
 		//this.gateway.sendEmail(to, subject, body);
-		salvarEmail(to, subject, body);
+		return salvarEmail(to, subject, body);
 	}
 
 	@Override
-	public void salvarEmail(String to, String subject, String body) {
-		this.salvar.salvarEmail(to, subject, body);
+	public Email salvarEmail(String to, String subject, String body) {
+		return salvar.salvarEmail(to, subject, body);
 		
 	}
 

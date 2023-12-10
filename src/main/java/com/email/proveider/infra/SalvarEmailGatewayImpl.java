@@ -16,10 +16,10 @@ public class SalvarEmailGatewayImpl implements SalvarEmailGateway {
 		this.emailRepository = email;
 	}
 	@Override
-	public void salvarEmail(String to, String subject, String body) {
+	public Email salvarEmail(String to, String subject, String body) {
 	  var email = new Email(to, subject, body);
 	 
-		emailRepository.save(email);
+		return emailRepository.save(email);
 		
 		
 	}

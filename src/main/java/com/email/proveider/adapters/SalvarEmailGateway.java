@@ -1,5 +1,7 @@
 package com.email.proveider.adapters;
 
+import com.email.proveider.core.Entity.Email;
+
 public interface SalvarEmailGateway {
-	void salvarEmail(String to, String subject, String body);
+	Email salvarEmail(String to, String subject, String body);
 }

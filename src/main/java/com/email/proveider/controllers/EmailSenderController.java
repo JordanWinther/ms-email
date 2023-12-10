@@ -16,12 +16,13 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.email.proveider.application.EmailSenderService;
 import com.email.proveider.core.EmailSenderUseCase;
+import com.email.proveider.core.Entity.Email;
 import com.email.proveider.core.dto.EmaiRequestlRecord;
 import com.email.proveider.core.exceptions.ErrorMailSenderException;
 import com.email.proveider.infra.JavaMailSender;
 
 @RestController
-@RequestMapping("/ms/email")
+@RequestMapping("/ms")
 public class EmailSenderController {
 	
 	
@@ -32,19 +33,19 @@ public class EmailSenderController {
 		this.senderUseCase = senderUseCase;
 	}
 
-	@PostMapping
+	@ResponseBody 
+	@PostMapping("/email")
 	public ResponseEntity<Object> sendEmail( @RequestBody @Validated  EmaiRequestlRecord email){
 		try {
-			
-			senderUseCase.sendEmail(email.getTo(), email.getSubject(),email.getBody());
-			return  ResponseEntity.ok(email);
+			  
+			  Email emailEntity = senderUseCase.sendEmail(email.getTo(), email.getSubject(),email.getBody());
+			return  ResponseEntity.ok(emailEntity);
 		} catch (ErrorMailSenderException e) {
-			
 			return ResponseEntity
 					//.status(HttpStatus.INTERNAL_SERVER_ERROR)
 					.ok(	new ErrorMailSenderException("Error while sending e-mail", e.getCause()) );
 		}
-		
-	
 }
+	
+	
 }
