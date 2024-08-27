@@ -26,6 +26,7 @@ public class Email {
     
 	public Email(String to, String subject, String body) {
 		super();
+		 
 		this.setDestinatary(to);
 		this.subject = subject;
 		this.body = body;
@@ -33,6 +34,16 @@ public class Email {
 	
 	
 	
+	public Integer getId() {
+		return id;
+	}
+
+
+	public void setId(Integer id) {
+		this.id = id;
+	}
+
+
 	public String getSubject() {
 		return subject;
 	}

@@ -1,6 +1,6 @@
 package com.email.proveider.core.dto;
 
-public class EmaiRequestlRecord {
+public class EmaiRequestDto {
 	
 	String to;
 	String subject;
@@ -10,7 +10,7 @@ public class EmaiRequestlRecord {
 	
 	@Override
 	public String toString() {
-		return "EmaiRequestlRecord [to=" + to + ", subject=" + subject + ", body=" + body + "]";
+		return "EmailRequest [to=" + to + ", subject=" + subject + ", body=" + body + "]";
 	}
 	public String getTo() {
 		return to;

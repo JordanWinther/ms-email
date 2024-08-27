@@ -1,14 +1,18 @@
-//package com.email.proveider.infra;
-//
-//import org.springframework.amqp.rabbit.annotation.RabbitListener;
-//import org.springframework.messaging.handler.annotation.Payload;
-//import org.springframework.stereotype.Component;
-//
-//@Component
-//public class EmailConsumer {
-//
-//	@RabbitListener(queues ="default.email")
-//	public void ListenEmailQueue(@Payload String payload) {
-//		System.out.print(payload);
-//	}
-//}
+package com.email.proveider.infra;
+
+import org.springframework.amqp.rabbit.annotation.RabbitListener;
+import org.springframework.messaging.handler.annotation.Payload;
+import org.springframework.stereotype.Component;
+
+import com.email.proveider.core.dto.EmailRecordDto;
+
+@Component
+public class EmailConsumer {
+	
+	 static String fila = "default.email";
+
+	@RabbitListener(queues = fila)
+	public void ListenEmailQueue(@Payload EmailRecordDto payload) {
+		System.out.print(payload);
+	}
+}
